@@ -1,0 +1,11 @@
+include "common"
+include "common-test"
+include 'orders-history-common'
+include 'customers-common'
+include 'orders-common'
+include 'customers-service'
+include 'orders-history-view-service'
+include 'orders-service'
+
+include "e2e-test"
+

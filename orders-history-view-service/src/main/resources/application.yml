@@ -1,0 +1,22 @@
+datasources:
+  default:
+    url: ${DB_URL}
+    driverClassName: ${DB_DRIVERCLASSNAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+endpoints:
+  health:
+    enabled: true
+    sensitive: false
+    details-visible: ANONYMOUS
+mongodb:
+  uri: ${SPRING_DATA_MONGODB_URI}
+micronaut:
+  router:
+    static-resources:
+      swagger-ui:
+        paths: classpath:swagger-ui
+        mapping: /swagger-ui/**
+      swagger:
+        paths: classpath:META-INF/swagger
+        mapping: /swagger/**
