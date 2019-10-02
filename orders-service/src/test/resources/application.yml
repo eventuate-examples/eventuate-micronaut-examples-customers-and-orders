@@ -1,0 +1,5 @@
+customer:
+  service:
+    root:
+      url: http://${DOCKER_HOST_IP}:8081/customers
+    url: http://${DOCKER_HOST_IP}:8081/customers/{customerId}
