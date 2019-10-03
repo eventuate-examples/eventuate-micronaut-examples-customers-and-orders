@@ -2,24 +2,22 @@ version: 2
 jobs:
   build:
     machine: true
-    working_directory: ~/eventuate-examples-java-customers-and-orders
+    working_directory: ~/eventuate-micronaut-examples-customers-and-orders
     steps:
       - checkout
       - restore_cache:
-          key: eventuate-examples-java-customers-and-orders-{{ checksum "gradle.properties" }}
+          keys:
+            - eventuate-micronaut-examples-customers-and-orders-
+            - eventuate-micronaut-examples-customers-and-orders-{{ checksum "gradle.properties" }}
       - run:
           command: |
             export TERM=dumb
-            cd common-contracts
-            ./mvnw install
-            cd ..
-            ./gradlew testClasses
             ./gradlew -P eventuateDriver=local testClasses
       - save_cache:
           paths:
             - ~/.gradle
             - ~/.m2
-          key: eventuate-examples-java-customers-and-orders-{{ checksum "gradle.properties" }}
+          key: eventuate-micronaut-examples-customers-and-orders-{{ checksum "gradle.properties" }}
       - run:
           command: |
             . ./setenv-circle-ci.sh
