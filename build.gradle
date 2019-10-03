@@ -35,12 +35,6 @@ dockerCompose {
     environment.put "EVENTUATE_KAFKA_VERSION", eventuateMessagingKafkaImageVersion
     environment.put "EVENTUATE_CDC_VERSION", eventuateCdcImageVersion
 
-    adminer {
-        projectName = null
-        useComposeFiles = ["docker-compose-eventuate-local-mysql.yml"]
-        startedServices = ["adminer"]
-    }
-
     mysqlbinlog {
         projectName = null
         useComposeFiles = ["docker-compose-eventuate-local-mysql.yml"]
