@@ -35,10 +35,10 @@ dockerCompose {
     environment.put "EVENTUATE_KAFKA_VERSION", eventuateMessagingKafkaImageVersion
     environment.put "EVENTUATE_CDC_VERSION", eventuateCdcImageVersion
 
-    adminer {
+    mysqlbinlogOnly {
         projectName = null
+        startedServices = [ 'mysql']
         useComposeFiles = ["docker-compose-eventuate-local-mysql.yml"]
-        startedServices = ["adminer"]
     }
 
     mysqlbinlog {
@@ -52,6 +52,12 @@ dockerCompose {
         startedServices = ["cdcservice"]
     }
 
+    postgrespollingOnly {
+        projectName = null
+        startedServices = [ 'postgres']
+        useComposeFiles = ["docker-compose-eventuate-local-postgres-polling.yml"]
+    }
+
     postgrespolling {
         projectName = null
         useComposeFiles = ["docker-compose-eventuate-local-postgres-polling.yml"]
@@ -61,6 +67,12 @@ dockerCompose {
         projectName = null
         useComposeFiles = ["docker-compose-eventuate-local-postgres-polling.yml"]
         startedServices = ["cdcservice"]
+    }
+
+    postgreswalOnly {
+        projectName = null
+        startedServices = [ 'postgres']
+        useComposeFiles = ["docker-compose-eventuate-local-postgres-wal.yml"]
     }
 
     postgreswal {
@@ -74,3 +86,13 @@ dockerCompose {
         startedServices = ["cdcservice"]
     }
 }
+
+
+mysqlbinlogComposeUp.dependsOn(mysqlbinlogComposeBuild)
+mysqlbinlogComposeUp.dependsOn(mysqlbinlogOnlyComposeUp)
+
+postgrespollingComposeUp.dependsOn(postgrespollingComposeBuild)
+postgrespollingComposeUp.dependsOn(postgrespollingOnlyComposeUp)
+
+postgreswalComposeUp.dependsOn(postgreswalComposeBuild)
+postgreswalComposeUp.dependsOn(postgreswalOnlyComposeUp)
