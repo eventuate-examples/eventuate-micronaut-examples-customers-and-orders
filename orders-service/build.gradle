@@ -46,7 +46,7 @@ dependencies {
     runtime "ch.qos.logback:logback-classic:1.2.3"
     annotationProcessor "io.micronaut.configuration:micronaut-openapi"
     compile "io.swagger.core.v3:swagger-annotations"
-    compile "io.eventuate.util:eventuate-util-micronaut-swagger-ui:$eventuateUtilVersion"
+    compile "io.eventuate.util:eventuate-util-swagger-ui:$eventuateUtilVersion"
 
     testCompile 'org.mockito:mockito-all:1.10.19'
     testCompile "io.eventuate.client.java:eventuate-client-java-jdbc-micronaut:$eventuateClientVersion"
