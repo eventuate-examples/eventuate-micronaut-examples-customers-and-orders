@@ -1,6 +1,5 @@
 package net.chrisrichardson.eventstore.examples.customersandorders.e2etests;
 
-import io.eventuate.CompletableFutureUtil;
 import net.chrisrichardson.eventstore.examples.customersandorders.common.domain.Money;
 import net.chrisrichardson.eventstore.examples.customersandorders.commontest.AbstractCustomerAndOrdersIntegrationTest;
 import net.chrisrichardson.eventstore.examples.customersandorders.customerscommon.CreateCustomerRequest;
@@ -19,7 +18,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.concurrent.CompletableFuture;
 
 import static org.junit.Assert.assertEquals;
 

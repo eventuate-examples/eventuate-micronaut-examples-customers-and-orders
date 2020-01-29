@@ -50,6 +50,7 @@ services:
       SPRING_PROFILES_ACTIVE: EventuatePolling
       EVENTUATELOCAL_CDC_READER_NAME: PostgresPollingReader
       EVENTUATE_CDC_TYPE: "EventuateLocal"
+      EVENTUATELOCAL_CDC_MAX_EVENT_INTERVAL_TO_ASSUME_READER_HEALTHY: 3600000
 
   mongodb:
     image: mongo:3.0.4
