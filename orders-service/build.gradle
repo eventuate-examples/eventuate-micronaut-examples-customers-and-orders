@@ -49,7 +49,7 @@ dependencies {
     compile "io.eventuate.util:eventuate-util-swagger-ui:$eventuateUtilVersion"
 
     testCompile 'org.mockito:mockito-all:1.10.19'
-    testCompile "io.eventuate.client.java:eventuate-client-java-jdbc-micronaut:$eventuateClientVersion"
+    testCompile "io.eventuate.client.java:eventuate-client-java-micronaut-jdbc:$eventuateClientVersion"
     testCompile project(":customers-common")
     testCompile "junit:junit:4.12"
     testCompile 'com.jayway.restassured:rest-assured:2.3.0'
