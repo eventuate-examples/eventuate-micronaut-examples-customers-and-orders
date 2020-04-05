@@ -38,7 +38,7 @@ dependencies {
     testCompile 'org.mockito:mockito-all:1.10.19'
     testCompile 'com.pholser:junit-quickcheck-core:0.7'
     testCompile 'com.pholser:junit-quickcheck-generators:0.7'
-    testCompile "io.eventuate.client.java:eventuate-client-java-micronaut-jdbc:$eventuateClientVersion"
+    testCompile "io.eventuate.local.java:eventuate-client-java-micronaut-jdbc:$eventuateLocalVersion"
     testAnnotationProcessor "io.micronaut:micronaut-inject-java"
     testCompile "org.junit.jupiter:junit-jupiter-api"
     testCompile "io.micronaut.test:micronaut-test-junit5"
