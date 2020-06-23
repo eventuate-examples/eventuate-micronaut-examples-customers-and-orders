@@ -9,7 +9,7 @@ services:
       KAFKA_HEAP_OPTS: -Xmx64m
 
   kafka:
-    image: "confluentinc/cp-enterprise-kafka:5.2.4"
+    image: "confluentinc/cp-kafka:5.2.4"
     ports:
       - 9092:9092
       - 29092:29092
@@ -65,7 +65,10 @@ services:
       - "27017:27017"
 
   customercommandside:
-    build: ./customers-service/
+    build:
+      context: ./customers-service/
+      args:
+        baseImageVersion: ${EVENTUATE_JAVA_BASE_IMAGE_VERSION?}
     ports:
       - "8081:8080"
     depends_on:
@@ -82,7 +85,10 @@ services:
       JAVA_OPTS: -Xmx32m
 
   orderhistoryqueryside:
-    build: ./orders-history-view-service/
+    build:
+      context: ./orders-history-view-service/
+      args:
+        baseImageVersion: ${EVENTUATE_JAVA_BASE_IMAGE_VERSION?}
     ports:
       - "8082:8080"
     depends_on:
@@ -101,7 +107,10 @@ services:
       JAVA_OPTS: -Xmx32m
 
   ordercommandside:
-    build: ./orders-service/
+    build:
+      context: ./orders-service/
+      args:
+        baseImageVersion: ${EVENTUATE_JAVA_BASE_IMAGE_VERSION?}
     ports:
       - "8083:8080"
     depends_on:

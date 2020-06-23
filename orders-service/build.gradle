@@ -10,6 +10,8 @@ apply plugin: 'docker-compose'
 dockerCompose.isRequiredBy(test)
 
 dockerCompose {
+    environment.put "EVENTUATE_JAVA_BASE_IMAGE_VERSION", eventuateExamplesBaseImageVersion
+
     if ("EventuatePolling".equals(System.getenv("SPRING_PROFILES_ACTIVE")))
         useComposeFiles = ['docker-compose-integration-tests-eventuate-local-postgres-polling.yml']
     else if ("PostgresWal".equals(System.getenv("SPRING_PROFILES_ACTIVE")))

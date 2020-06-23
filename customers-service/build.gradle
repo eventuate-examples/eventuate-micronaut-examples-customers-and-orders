@@ -45,10 +45,6 @@ dependencies {
     testRuntime "org.junit.jupiter:junit-jupiter-engine"
 }
 
-configurations {
-    testRuntime.exclude group: "io.micronaut.configuration", module: "micronaut-jdbc-hikari"
-}
-
 mainClassName = "net.chrisrichardson.eventstore.examples.customersandorders.customersservice.CustomersServiceMain"
 
 shadowJar {
