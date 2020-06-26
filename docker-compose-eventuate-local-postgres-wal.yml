@@ -77,7 +77,6 @@ services:
       DB_PASSWORD: eventuate
       DB_DRIVERCLASSNAME: org.postgresql.Driver
       EVENTUATELOCAL_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
-      JAVA_OPTS: -Xmx32m
 
   orderhistoryqueryside:
     build:
@@ -98,7 +97,6 @@ services:
       DB_PASSWORD: eventuate
       DB_DRIVERCLASSNAME: org.postgresql.Driver
       EVENTUATELOCAL_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
-      JAVA_OPTS: -Xmx32m
 
   ordercommandside:
     build:
@@ -120,4 +118,3 @@ services:
       DB_PASSWORD: eventuate
       DB_DRIVERCLASSNAME: org.postgresql.Driver
       EVENTUATELOCAL_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
-      JAVA_OPTS: -Xmx32m
