@@ -94,10 +94,6 @@ services:
       - zookeeper
     environment:
       SPRING_DATA_MONGODB_URI: mongodb://mongodb/customers_and_orders
-      DB_URL: jdbc:postgresql://postgres/eventuate
-      DB_USERNAME: eventuate
-      DB_PASSWORD: eventuate
-      DB_DRIVERCLASSNAME: org.postgresql.Driver
       EVENTUATELOCAL_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
 
   ordercommandside:

@@ -35,6 +35,10 @@ dependencies {
     compile project(":orders-common")
     compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
 
+    compile "io.eventuate.local.java:eventuate-client-java-micronaut:$eventuateLocalVersion"
+    compile "io.eventuate.local.java:eventuate-local-java-micronaut-jdbc:$eventuateLocalVersion"
+    compile "io.eventuate.common:eventuate-common-micronaut-spring-jdbc:$eventuateCommonVersion"
+
     compile "io.micronaut.configuration:micronaut-hibernate-jpa"
     annotationProcessor "javax.persistence:javax.persistence-api:2.2"
     compile 'io.micronaut.configuration:micronaut-jdbc-hikari'

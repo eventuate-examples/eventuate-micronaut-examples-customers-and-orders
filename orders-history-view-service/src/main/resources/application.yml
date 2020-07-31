@@ -1,9 +1,3 @@
-datasources:
-  default:
-    url: ${DB_URL}
-    driverClassName: ${DB_DRIVERCLASSNAME}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
 endpoints:
   health:
     enabled: true

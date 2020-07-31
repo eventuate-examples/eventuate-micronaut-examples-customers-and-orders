@@ -95,10 +95,6 @@ services:
       - zookeeper
     environment:
       SPRING_DATA_MONGODB_URI: mongodb://mongodb/customers_and_orders
-      DB_URL: jdbc:mysql://mysql/eventuate
-      DB_DRIVERCLASSNAME: com.mysql.jdbc.Driver
-      DB_USERNAME: mysqluser
-      DB_PASSWORD: mysqlpw
       EVENTUATELOCAL_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
 
   ordercommandside:

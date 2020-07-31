@@ -1,10 +1,10 @@
 
 dependencies {
     compile 'commons-lang:commons-lang:2.6'
-    compile "io.eventuate.local.java:eventuate-client-java-micronaut:$eventuateLocalVersion"
-    compile "io.eventuate.local.java:eventuate-local-java-micronaut-jdbc:$eventuateLocalVersion"
+
+    compile "io.eventuate.local.java:eventuate-client-java:$eventuateLocalVersion"
+
     compile "io.eventuate.common:eventuate-common-id:$eventuateCommonVersion"
-    compile "io.eventuate.common:eventuate-common-micronaut-spring-jdbc:$eventuateCommonVersion"
 
     testCompile 'com.pholser:junit-quickcheck-core:0.7'
     testCompile 'com.pholser:junit-quickcheck-generators:0.7'
