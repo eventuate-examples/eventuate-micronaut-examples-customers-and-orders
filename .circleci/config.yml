@@ -19,6 +19,8 @@ jobs:
             - ~/.m2
           key: eventuate-micronaut-examples-customers-and-orders-{{ checksum "gradle.properties" }}
       - run:
+          command: ./.circleci/upgrade-docker-compose.sh
+      - run:
           command: |
             . ./setenv-circle-ci.sh
             ./build-and-test-all-eventuate-local-mysql.sh
