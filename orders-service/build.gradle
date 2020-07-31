@@ -10,6 +10,8 @@ apply plugin: 'docker-compose'
 dockerCompose.isRequiredBy(test)
 
 dockerCompose {
+    environment.put "EVENTUATE_JAVA_BASE_IMAGE_VERSION", eventuateExamplesBaseImageVersion
+
     if ("EventuatePolling".equals(System.getenv("SPRING_PROFILES_ACTIVE")))
         useComposeFiles = ['docker-compose-integration-tests-eventuate-local-postgres-polling.yml']
     else if ("PostgresWal".equals(System.getenv("SPRING_PROFILES_ACTIVE")))
@@ -32,6 +34,10 @@ dependencyManagement {
 dependencies {
     compile project(":orders-common")
     compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
+
+    compile "io.eventuate.local.java:eventuate-client-java-micronaut:$eventuateLocalVersion"
+    compile "io.eventuate.local.java:eventuate-local-java-micronaut-jdbc:$eventuateLocalVersion"
+    compile "io.eventuate.common:eventuate-common-micronaut-spring-jdbc:$eventuateCommonVersion"
 
     compile "io.micronaut.configuration:micronaut-hibernate-jpa"
     annotationProcessor "javax.persistence:javax.persistence-api:2.2"

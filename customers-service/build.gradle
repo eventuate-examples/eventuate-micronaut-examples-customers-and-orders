@@ -19,6 +19,10 @@ dependencyManagement {
 dependencies {
     compile project(":customers-common")
 
+    compile "io.eventuate.local.java:eventuate-client-java-micronaut:$eventuateLocalVersion"
+    compile "io.eventuate.local.java:eventuate-local-java-micronaut-jdbc:$eventuateLocalVersion"
+    compile "io.eventuate.common:eventuate-common-micronaut-spring-jdbc:$eventuateCommonVersion"
+
     compile "io.micronaut.configuration:micronaut-hibernate-jpa"
     annotationProcessor "javax.persistence:javax.persistence-api:2.2"
     compile 'io.micronaut.configuration:micronaut-jdbc-hikari'
