@@ -51,6 +51,7 @@ services:
       SPRING_PROFILES_ACTIVE: PostgresWal
       EVENTUATELOCAL_CDC_READER_NAME: PostgresWalReader
       EVENTUATE_CDC_TYPE: "EventuateLocal"
+      EVENTUATE_OUTBOX_ID: 1
       JAVA_OPTS: -Xmx64m
 
   mongodb:
