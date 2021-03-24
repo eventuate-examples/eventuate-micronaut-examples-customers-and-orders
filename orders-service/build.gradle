@@ -35,8 +35,8 @@ dependencies {
     compile project(":orders-common")
     compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
 
-    compile "io.eventuate.local.java:eventuate-client-java-micronaut:$eventuateLocalVersion"
-    compile "io.eventuate.local.java:eventuate-local-java-micronaut-jdbc:$eventuateLocalVersion"
+    compile "io.eventuate.local.java:eventuate-client-java-micronaut"
+    compile "io.eventuate.local.java:eventuate-local-java-micronaut-jdbc"
     compile "io.eventuate.common:eventuate-common-micronaut-spring-jdbc:$eventuateCommonVersion"
 
     compile "io.micronaut.configuration:micronaut-hibernate-jpa"
@@ -55,7 +55,7 @@ dependencies {
     compile "io.eventuate.util:eventuate-util-swagger-ui:$eventuateUtilVersion"
 
     testCompile 'org.mockito:mockito-all:1.10.19'
-    testCompile "io.eventuate.local.java:eventuate-client-java-micronaut-jdbc:$eventuateLocalVersion"
+    testCompile "io.eventuate.local.java:eventuate-client-java-micronaut-jdbc"
     testCompile project(":customers-common")
     testCompile "junit:junit:4.12"
     testCompile 'com.jayway.restassured:rest-assured:2.3.0'
