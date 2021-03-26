@@ -27,8 +27,8 @@ dependencyManagement {
 dependencies {
     compile project(":orders-history-common")
 
-    compile "io.eventuate.local.java:eventuate-client-java-micronaut-events:$eventuateLocalVersion"
-    compile "io.eventuate.local.java:eventuate-local-java-micronaut-events:$eventuateLocalVersion"
+    compile "io.eventuate.local.java:eventuate-client-java-micronaut-events"
+    compile "io.eventuate.local.java:eventuate-local-java-micronaut-events"
 
     compile "org.mongodb:mongo-java-driver"
     compile 'io.micronaut.configuration:micronaut-mongo-reactive'
