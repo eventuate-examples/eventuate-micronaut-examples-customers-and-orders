@@ -2,13 +2,9 @@ package net.chrisrichardson.eventstore.examples.customersandorders.ordershistory
 
 import net.chrisrichardson.eventstore.examples.customersandorders.common.domain.Money;
 import net.chrisrichardson.eventstore.examples.customersandorders.common.order.OrderState;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
 public class OrderView {
 
-  @Id
   private String id;
 
   private OrderState state;
@@ -30,5 +26,9 @@ public class OrderView {
 
   public OrderState getState() {
     return state;
+  }
+
+  public void setState(OrderState state) {
+    this.state = state;
   }
 }

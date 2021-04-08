@@ -1,16 +1,12 @@
 package net.chrisrichardson.eventstore.examples.customersandorders.ordershistorycommon;
 
 import net.chrisrichardson.eventstore.examples.customersandorders.common.domain.Money;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Document
 public class CustomerView {
 
-  @Id
   private String id;
 
 

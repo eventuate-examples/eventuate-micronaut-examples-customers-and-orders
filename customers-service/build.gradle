@@ -12,7 +12,7 @@ repositories {
 
 dependencyManagement {
     imports {
-        mavenBom 'io.micronaut:micronaut-bom:1.2.0'
+        mavenBom "io.micronaut:micronaut-bom:$micronautVersion"
     }
 }
 
@@ -21,11 +21,10 @@ dependencies {
 
     compile "io.eventuate.local.java:eventuate-client-java-micronaut"
     compile "io.eventuate.local.java:eventuate-local-java-micronaut-jdbc"
-    compile "io.eventuate.common:eventuate-common-micronaut-spring-jdbc:$eventuateCommonVersion"
+    compile "io.eventuate.common:eventuate-common-micronaut-data-jdbc:$eventuateCommonVersion"
 
-    compile "io.micronaut.configuration:micronaut-hibernate-jpa"
     annotationProcessor "javax.persistence:javax.persistence-api:2.2"
-    compile 'io.micronaut.configuration:micronaut-jdbc-hikari'
+    compile 'io.micronaut.sql:micronaut-jdbc-hikari'
     annotationProcessor "io.micronaut:micronaut-inject-java"
     annotationProcessor "io.micronaut:micronaut-validation"
     compile "io.micronaut:micronaut-inject"

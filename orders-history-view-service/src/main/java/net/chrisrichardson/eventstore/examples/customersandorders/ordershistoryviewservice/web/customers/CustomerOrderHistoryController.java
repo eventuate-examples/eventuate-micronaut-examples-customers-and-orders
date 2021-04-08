@@ -16,11 +16,6 @@ public class CustomerOrderHistoryController {
 
   @Get("/customers/{customerId}")
   public HttpResponse<CustomerView> getCustomer(String customerId) {
-    CustomerView customer = customerViewRepository.findOne(customerId);
-    System.out.println("Found customer=" + customer + " for " + customerId);
-    if (customer == null)
-      return HttpResponse.notFound();
-    else
-      return HttpResponse.ok(customer);
+    return customerViewRepository.findById(customerId).map(HttpResponse::ok).orElseGet(HttpResponse::notFound);
   }
 }

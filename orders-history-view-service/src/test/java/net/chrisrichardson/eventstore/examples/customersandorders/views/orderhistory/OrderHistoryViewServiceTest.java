@@ -46,7 +46,7 @@ public class OrderHistoryViewServiceTest {
     orderHistoryViewService.addOrder(customerId, orderId2, orderTotal2);
     orderHistoryViewService.rejectOrder(customerId, orderId2);
 
-    CustomerView customerView = customerViewRepository.findOne(customerId);
+    CustomerView customerView = customerViewRepository.findById(customerId).get();
 
 
     assertEquals(2, customerView.getOrders().size());
@@ -59,11 +59,11 @@ public class OrderHistoryViewServiceTest {
     assertEquals(orderTotal2, customerView.getOrders().get(orderId2).getOrderTotal());
     assertEquals(OrderState.REJECTED, customerView.getOrders().get(orderId2).getState());
 
-    OrderView orderView1 = orderViewRepository.findOne(orderId1);
+    OrderView orderView1 = orderViewRepository.findById(orderId1).get();
     assertEquals(orderTotal1, orderView1.getOrderTotal());
     assertEquals(OrderState.APPROVED, orderView1.getState());
 
-    OrderView orderView2 = orderViewRepository.findOne(orderId2);
+    OrderView orderView2 = orderViewRepository.findById(orderId2).get();
     assertEquals(orderTotal2, orderView2.getOrderTotal());
     assertEquals(OrderState.REJECTED, orderView2.getState());
   }

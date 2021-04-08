@@ -19,13 +19,12 @@ public class CustomerViewRepositoryIntegrationTest {
 
   @Test
   public void shouldCreateAndFindCustomer() {
-
     String customerId = UUID.randomUUID().toString();
     Money creditLimit = new Money(2000);
     String customerName = "Fred";
 
     customerViewRepository.addCustomer(customerId, customerName, creditLimit);
-    CustomerView customerView = customerViewRepository.findOne(customerId);
+    CustomerView customerView = customerViewRepository.findById(customerId).get();
 
     assertEquals(customerId, customerView.getId());
     assertEquals(customerName, customerView.getName());
