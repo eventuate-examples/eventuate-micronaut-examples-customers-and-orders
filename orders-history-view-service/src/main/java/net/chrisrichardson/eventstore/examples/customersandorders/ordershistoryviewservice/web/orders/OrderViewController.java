@@ -15,12 +15,6 @@ public class OrderViewController {
 
   @Get("/orders/{orderId}")
   public HttpResponse<OrderView> getOrder(String orderId) {
-
-    OrderView ov = orderViewRepository.findOne(orderId);
-    if (ov == null) {
-      return HttpResponse.notFound();
-    } else {
-      return HttpResponse.ok(ov);
-    }
+    return orderViewRepository.findById(orderId).map(HttpResponse::ok).orElseGet(HttpResponse::notFound);
   }
 }

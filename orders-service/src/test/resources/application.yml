@@ -5,7 +5,7 @@ customer:
     url: http://${DOCKER_HOST_IP}:8081/customers/{customerId}
 datasources:
   default:
-    url: ${DB_URL}
-    driverClassName: ${DB_DRIVERCLASSNAME}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: test
+    driverClassName: org.h2.Driver

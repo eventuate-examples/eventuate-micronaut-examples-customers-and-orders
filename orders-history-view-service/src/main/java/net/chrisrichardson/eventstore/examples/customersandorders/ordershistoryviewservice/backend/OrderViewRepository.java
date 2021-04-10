@@ -1,34 +1,42 @@
 package net.chrisrichardson.eventstore.examples.customersandorders.ordershistoryviewservice.backend;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.client.MongoClient;
 import net.chrisrichardson.eventstore.examples.customersandorders.common.domain.Money;
 import net.chrisrichardson.eventstore.examples.customersandorders.common.order.OrderState;
 import net.chrisrichardson.eventstore.examples.customersandorders.ordershistorycommon.OrderView;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
+import java.util.Optional;
 
-import static org.springframework.data.mongodb.core.query.Criteria.where;
+public class OrderViewRepository extends AbstractRepository {
 
-@Singleton
-public class OrderViewRepository {
+  public OrderViewRepository(MongoClient mongoClient) {
+    super(mongoClient, "orders");
+  }
 
-  @Inject
-  private MongoTemplate mongoTemplate;
+  public Optional<OrderView> findById(String orderId) {
+    return findOne(orderId)
+            .map(orderDocument -> {
 
-  public OrderView findOne(String orderId) {
-    return mongoTemplate.findOne(new Query(where("id").is(orderId)), OrderView.class);
+              OrderView orderView = new OrderView(orderId, getMoney(orderDocument, "orderTotal"));
+
+              Optional
+                      .ofNullable(orderDocument.getString("state"))
+                      .map(OrderState::valueOf).ifPresent(orderView::setState);
+
+              return orderView;
+            });
   }
 
   public void addOrder(String orderId, Money orderTotal) {
-    mongoTemplate.upsert(new Query(where("id").is(orderId)),
-            new Update().set("state", OrderState.CREATED).set("orderTotal", orderTotal), OrderView.class);
+    repeatOnFailure(() -> {
+      findOneAndUpdate(orderId, new BasicDBObject("orderTotal", orderTotal.getAmount()));
+    });
   }
 
   public void updateOrderState(String orderId, OrderState state) {
-    mongoTemplate.updateFirst(new Query(where("id").is(orderId)),
-            new Update().set("state", state), OrderView.class);
+    repeatOnFailure(() -> {
+      findOneAndUpdate(orderId, new BasicDBObject("state", state.name()));
+    });
   }
 }
