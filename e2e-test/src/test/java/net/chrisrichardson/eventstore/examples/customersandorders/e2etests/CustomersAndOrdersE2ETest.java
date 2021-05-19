@@ -1,5 +1,6 @@
 package net.chrisrichardson.eventstore.examples.customersandorders.e2etests;
 
+import io.eventuate.util.test.async.UrlTesting;
 import net.chrisrichardson.eventstore.examples.customersandorders.common.domain.Money;
 import net.chrisrichardson.eventstore.examples.customersandorders.commontest.AbstractCustomerAndOrdersIntegrationTest;
 import net.chrisrichardson.eventstore.examples.customersandorders.customerscommon.CreateCustomerRequest;
@@ -8,6 +9,7 @@ import net.chrisrichardson.eventstore.examples.customersandorders.orderscommmon.
 import net.chrisrichardson.eventstore.examples.customersandorders.orderscommmon.CreateOrderResponse;
 import net.chrisrichardson.eventstore.examples.customersandorders.ordershistorycommon.CustomerView;
 import net.chrisrichardson.eventstore.examples.customersandorders.ordershistorycommon.OrderView;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,6 +20,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
+
+import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 
@@ -43,6 +47,17 @@ public class CustomersAndOrdersE2ETest extends AbstractCustomerAndOrdersIntegrat
 
   @Autowired
   RestTemplate restTemplate;
+
+  @Test
+  public void testSwaggerUiUrls() throws IOException {
+    testSwaggerUiUrl(8081);
+    testSwaggerUiUrl(8082);
+    testSwaggerUiUrl(8083);
+  }
+
+  private void testSwaggerUiUrl(int port) throws IOException {
+    UrlTesting.assertUrlStatusIsOk("localhost", port, "/swagger-ui/index.html");
+  }
 
   private CustomerView getCustomer(String customerId) {
     try {
