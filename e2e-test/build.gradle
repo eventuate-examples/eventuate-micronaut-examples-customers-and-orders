@@ -3,6 +3,8 @@ dependencies {
     testCompile project(":customers-common")
     testCompile project(":orders-common")
 
+    testCompile "io.eventuate.util:eventuate-util-test:$eventuateUtilVersion"
+
     testCompile "junit:junit:4.12"
     testCompile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
     testCompile "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
