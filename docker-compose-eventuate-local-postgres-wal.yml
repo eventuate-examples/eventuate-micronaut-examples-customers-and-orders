@@ -46,7 +46,7 @@ services:
       SPRING_DATASOURCE_USERNAME: eventuate
       SPRING_DATASOURCE_PASSWORD: eventuate
       SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.postgresql.Driver
-      EVENTUATELOCAL_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      EVENTUATELOCAL_KAFKA_BOOTSTRAP_SERVERS: kafka:29092
       EVENTUATELOCAL_ZOOKEEPER_CONNECTION_STRING: zookeeper:2181
       SPRING_PROFILES_ACTIVE: PostgresWal
       EVENTUATELOCAL_CDC_READER_NAME: PostgresWalReader
@@ -64,7 +64,7 @@ services:
     build:
       context: ./customers-service/
       args:
-        baseImageVersion: ${EVENTUATE_JAVA_BASE_IMAGE_VERSION?}
+        baseImageVersion: ${EVENTUATE_JAVA_BASE_IMAGE_VERSION}
     ports:
       - "8081:8080"
     depends_on:
@@ -76,13 +76,13 @@ services:
       DB_USERNAME: eventuate
       DB_PASSWORD: eventuate
       DB_DRIVERCLASSNAME: org.postgresql.Driver
-      EVENTUATELOCAL_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      EVENTUATELOCAL_KAFKA_BOOTSTRAP_SERVERS: kafka:29092
 
   orderhistoryqueryside:
     build:
       context: ./orders-history-view-service/
       args:
-        baseImageVersion: ${EVENTUATE_JAVA_BASE_IMAGE_VERSION?}
+        baseImageVersion: ${EVENTUATE_JAVA_BASE_IMAGE_VERSION}
     ports:
       - "8082:8080"
     depends_on:
@@ -92,13 +92,13 @@ services:
       - zookeeper
     environment:
       SPRING_DATA_MONGODB_URI: mongodb://mongodb/customers_and_orders
-      EVENTUATELOCAL_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      EVENTUATELOCAL_KAFKA_BOOTSTRAP_SERVERS: kafka:29092
 
   ordercommandside:
     build:
       context: ./orders-service/
       args:
-        baseImageVersion: ${EVENTUATE_JAVA_BASE_IMAGE_VERSION?}
+        baseImageVersion: ${EVENTUATE_JAVA_BASE_IMAGE_VERSION}
     ports:
       - "8083:8080"
     depends_on:
@@ -113,4 +113,4 @@ services:
       DB_USERNAME: eventuate
       DB_PASSWORD: eventuate
       DB_DRIVERCLASSNAME: org.postgresql.Driver
-      EVENTUATELOCAL_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      EVENTUATELOCAL_KAFKA_BOOTSTRAP_SERVERS: kafka:29092

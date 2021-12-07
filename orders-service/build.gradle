@@ -10,14 +10,20 @@ apply plugin: 'docker-compose'
 dockerCompose.isRequiredBy(test)
 
 dockerCompose {
+    environment.put "EVENTUATE_COMMON_VERSION", eventuateCommonImageVersion
+    environment.put "EVENTUATE_CDC_VERSION", eventuateCdcImageVersion
     environment.put "EVENTUATE_JAVA_BASE_IMAGE_VERSION", eventuateExamplesBaseImageVersion
 
+    captureContainersOutputToFile=project.file("./docker-logs")
+    projectName = null
+
     if ("EventuatePolling".equals(System.getenv("SPRING_PROFILES_ACTIVE")))
-        useComposeFiles = ['docker-compose-integration-tests-eventuate-local-postgres-polling.yml']
+        useComposeFiles = ['../docker-compose-eventuate-local-postgres-polling.yml']
     else if ("PostgresWal".equals(System.getenv("SPRING_PROFILES_ACTIVE")))
-        useComposeFiles = ['docker-compose-integration-tests-eventuate-local-postgres-wal.yml']
-    else
-        useComposeFiles = ['docker-compose-integration-tests-eventuate-local-mysql.yml']
+        useComposeFiles = ['../docker-compose-eventuate-local-postgres-wal.yml']
+    else useComposeFiles = ['../docker-compose-eventuate-local-mysql.yml']
+
+    startedServices = ['customercommandside']
 }
 
 repositories {
