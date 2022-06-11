@@ -10,19 +10,24 @@ apply plugin: 'docker-compose'
 dockerCompose.isRequiredBy(test)
 
 dockerCompose {
+    environment.put "EVENTUATE_COMMON_VERSION", eventuateCommonImageVersion
+    environment.put "EVENTUATE_MESSAGING_KAFKA_IMAGE_VERSION", eventuateMessagingKafkaImageVersion
+    environment.put "EVENTUATE_CDC_VERSION", eventuateCdcImageVersion
     environment.put "EVENTUATE_JAVA_BASE_IMAGE_VERSION", eventuateExamplesBaseImageVersion
 
     if ("EventuatePolling".equals(System.getenv("SPRING_PROFILES_ACTIVE")))
-        useComposeFiles = ['docker-compose-integration-tests-eventuate-local-postgres-polling.yml']
+        useComposeFiles = ['../docker-compose-eventuate-local-postgres-polling.yml']
     else if ("PostgresWal".equals(System.getenv("SPRING_PROFILES_ACTIVE")))
-        useComposeFiles = ['docker-compose-integration-tests-eventuate-local-postgres-wal.yml']
+        useComposeFiles = ['../docker-compose-eventuate-local-postgres-wal.yml']
     else
-        useComposeFiles = ['docker-compose-integration-tests-eventuate-local-mysql.yml']
+        useComposeFiles = ['../docker-compose-eventuate-local-mysql.yml']
+    startedServices=["customercommandside"]
+    projectName = null
+
 }
 
 repositories {
     mavenCentral()
-    maven { url "https://jcenter.bintray.com" }
 }
 
 dependencyManagement {

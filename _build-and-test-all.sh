@@ -9,6 +9,8 @@ dockercdc="./gradlew ${database}${mode}cdcCompose"
 if [ -z "$SPRING_DATA_MONGODB_URI" ] ; then
   export SPRING_DATA_MONGODB_URI=mongodb://${DOCKER_HOST_IP?}/customers_orders
   echo Set SPRING_DATA_MONGODB_URI $SPRING_DATA_MONGODB_URI
+else
+  echo Already Set SPRING_DATA_MONGODB_URI=$SPRING_DATA_MONGODB_URI
 fi
 
 

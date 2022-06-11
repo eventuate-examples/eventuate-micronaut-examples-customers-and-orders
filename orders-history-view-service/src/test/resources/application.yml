@@ -1,2 +1,4 @@
 mongodb:
   uri: ${SPRING_DATA_MONGODB_URI}
+
+eventuatelocal.kafka.bootstrap.servers: localhost:9092

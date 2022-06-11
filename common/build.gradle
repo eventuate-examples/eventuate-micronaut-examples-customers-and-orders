@@ -11,4 +11,7 @@ dependencies {
     testCompile "junit:junit:4.12"
     testCompile "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
     testCompile "io.eventuate.local.java:eventuate-client-java-jdbc"
+
+    compile 'jakarta.xml.bind:jakarta.xml.bind-api:2.3.3'
+    compile 'com.sun.xml.bind:jaxb-impl:2.3.3'
 }

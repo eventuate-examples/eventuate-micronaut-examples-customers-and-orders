@@ -9,3 +9,5 @@ datasources:
     username: sa
     password: test
     driverClassName: org.h2.Driver
+
+eventuatelocal.kafka.bootstrap.servers: localhost:9092
