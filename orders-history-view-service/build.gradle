@@ -24,33 +24,33 @@ dependencyManagement {
 }
 
 dependencies {
-    compile project(":orders-history-common")
+    api project(":orders-history-common")
 
-    compile "io.eventuate.local.java:eventuate-client-java-micronaut-events"
-    compile "io.eventuate.local.java:eventuate-local-java-micronaut-events"
+    api "io.eventuate.local.java:eventuate-client-java-micronaut-events"
+    api "io.eventuate.local.java:eventuate-local-java-micronaut-events"
 
     implementation("io.micronaut.mongodb:micronaut-mongo-sync")
     annotationProcessor "io.micronaut:micronaut-inject-java"
     annotationProcessor "io.micronaut:micronaut-validation"
-    compile "io.micronaut:micronaut-inject"
-    compile "io.micronaut:micronaut-validation"
-    compile "io.micronaut:micronaut-runtime"
-    compile "io.micronaut:micronaut-http-server-netty"
-    compile 'io.micronaut:micronaut-management'
-    runtime "ch.qos.logback:logback-classic:1.2.3"
+    api "io.micronaut:micronaut-inject"
+    api "io.micronaut:micronaut-validation"
+    api "io.micronaut:micronaut-runtime"
+    api "io.micronaut:micronaut-http-server-netty"
+    api 'io.micronaut:micronaut-management'
+    runtimeOnly "ch.qos.logback:logback-classic:1.2.3"
     annotationProcessor "io.micronaut.configuration:micronaut-openapi"
-    compile "io.swagger.core.v3:swagger-annotations"
-    compile "io.eventuate.util:eventuate-util-swagger-ui:$eventuateUtilVersion"
+    api "io.swagger.core.v3:swagger-annotations"
+    api "io.eventuate.util:eventuate-util-swagger-ui:$eventuateUtilVersion"
 
-    testCompile 'org.mockito:mockito-all:1.10.19'
-    testCompile project(":customers-common")
-    testCompile "junit:junit:4.12"
-    testCompile 'com.jayway.restassured:rest-assured:2.3.0'
-    testCompile "com.jayway.jsonpath:json-path:2.3.0"
+    testImplementation 'org.mockito:mockito-all:1.10.19'
+    testImplementation project(":customers-common")
+    testImplementation "junit:junit:4.12"
+    testImplementation 'com.jayway.restassured:rest-assured:2.3.0'
+    testImplementation "com.jayway.jsonpath:json-path:2.3.0"
     testAnnotationProcessor "io.micronaut:micronaut-inject-java"
-    testCompile "org.junit.jupiter:junit-jupiter-api"
-    testCompile "io.micronaut.test:micronaut-test-junit5"
-    testRuntime "org.junit.jupiter:junit-jupiter-engine"
+    testImplementation "org.junit.jupiter:junit-jupiter-api"
+    testImplementation "io.micronaut.test:micronaut-test-junit5"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine"
 }
 
 mainClassName = "net.chrisrichardson.eventstore.examples.customersandorders.ordershistoryviewservice.OrderHistoryQuerySideService"
